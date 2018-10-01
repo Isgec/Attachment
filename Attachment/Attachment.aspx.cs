@@ -190,6 +190,12 @@ namespace Attachment
                         {
                             foreach (HttpPostedFile PostedFile in FileUpload.PostedFiles)
                             {
+                                double filesize = PostedFile.ContentLength;
+                                DriveInfo dDrive = new DriveInfo("D");
+                                double Availablespace = dDrive.AvailableFreeSpace;
+                                if (filesize < Availablespace)
+                                {
+
                                 string fileName = Path.GetFileNameWithoutExtension(PostedFile.FileName);
                                 string fileExtension = Path.GetExtension(PostedFile.FileName);
                                 try
@@ -203,7 +209,7 @@ namespace Attachment
                                     objAttachmentcls.LibraryCode = dt.Rows[0]["LibCode"].ToString();
                                     int nRecord = new Random(Guid.NewGuid().GetHashCode()).Next();
                                     objAttachmentcls.RunningId = nRecord;
-                                    objAttachmentcls.DocumentId = "AAA"+nRecord.ToString();
+                                    objAttachmentcls.DocumentId = "AAA" + nRecord.ToString();
                                     // DataTable dtFile = objAttachmentcls.GetFileName();
                                     //  if (dtFile.Rows.Count == 0)
                                     //  {
@@ -239,10 +245,17 @@ namespace Attachment
                                     //    ScriptManager.RegisterStartupScript(this, typeof(Page), "alert", "alert('This file name already exist please change your file name');", true);
                                     // }
                                 }
+
                                 catch (System.Exception ex)
                                 {
                                     ScriptManager.RegisterStartupScript(this, typeof(Page), "alert", "alert('" + ex.Message + "');", true);
                                 }
+                            }
+
+                                else
+                              {
+                               ScriptManager.RegisterStartupScript(this, typeof(Page), "alert", "alert('Error: Not enough space on Disk! Contact IT Infrastructure Team.');", true);
+                              }
                             }
                         }
                         else
@@ -286,6 +299,7 @@ namespace Attachment
                 byte[] data = req.DownloadData(ServerPath);
                 response.BinaryWrite(data);
                 response.End();
+               
             }
             catch (System.Exception ex)
             {
