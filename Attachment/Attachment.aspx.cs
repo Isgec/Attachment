@@ -169,6 +169,7 @@ namespace Attachment
                 ScriptManager.RegisterStartupScript(this, typeof(Page), "alert", "alert('Due to some technical issue record not found');", true);
             }
         }
+        //Testing for gitHub
         protected void btnUpload_Click(object sender, EventArgs e)
         {
             if (Request.QueryString["AthHandle"] != null && Request.QueryString["Index"] != null && Request.QueryString["AttachedBy"] != null)
@@ -195,7 +196,6 @@ namespace Attachment
                                 double Availablespace = dDrive.AvailableFreeSpace;
                                 if (filesize < Availablespace)
                                 {
-
                                 string fileName = Path.GetFileNameWithoutExtension(PostedFile.FileName);
                                 string fileExtension = Path.GetExtension(PostedFile.FileName);
                                 try
