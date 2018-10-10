@@ -449,6 +449,7 @@ namespace Attachment
         {
             if (Request.QueryString["RefHandle"] != null && Request.QueryString["RefIndex"] != null)
             {
+                divTransmittalScreen.Visible = true;
                 objAttachmentcls = new AttachmentCls();
                 // objAttachmentcls.IndexValue = Request.QueryString["Index"];
                 objAttachmentcls.AttachmentHandle = Request.QueryString["RefHandle"];
@@ -528,9 +529,9 @@ namespace Attachment
                         // }
                         // cmdUpdate.ExecuteNonQuery();
                         nRecord = new Random(Guid.NewGuid().GetHashCode()).Next();
-                        sDocumentId = "AAA" + nRecord.ToString();
+                        string sDocumentNumber = "AAA" + nRecord.ToString();
                         string InsertAttachment = @"Insert into ttcisg132200 (t_atby,t_aton,t_prcd,t_drid,t_dcid,t_fnam,t_lbcd,t_hndl,t_indx,t_Refcntd,t_Refcntu) 
-                                            values('" + sattachedby + "','" + DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss") + "','Dmisg134_1_vendor','" + nRecord + "','" + sDocumentId + "','" + sFileName + "','LIB000001','"+ sCopyhandle + "','" + sCopyIndex + "','','')";
+                                            values('" + sattachedby + "','" + DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss") + "','Dmisg134_1_vendor','" + sDocumentNumber + "','" + sDocumentId + "','" + sFileName + "','LIB000001','"+ sCopyhandle + "','" + sCopyIndex + "','','')";
                         //string sUpdatedon
                         SqlCommand cmdInsert = new SqlCommand(InsertAttachment, con);
                         cmdInsert.CommandType = CommandType.Text;

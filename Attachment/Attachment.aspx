@@ -27,6 +27,7 @@
     </div>--%>
     <div style="text-align: initial; font-size: 14px; font-weight: bold; text-align: center;">
           <asp:Button ID="btnSystemAttachmentUpload" CssClass="button" Text="Select Existing Attachments" runat="server" OnClick="btnSystemAttachUpload_Click" BackColor="#53a9ff" ForeColor="White" />
+        <%-- <div runat="server" id="divTransmittalScreen" Visible="false" style="text-align: center; font-size: 15px; margin-top: 20px;">Note: Only those Drawings whose transmittal is created after 20th Aug 2018 should be selected for automatic file attachment instead of manual upload</div>--%>
         <div style="margin-top: 20px; font-size: 12px; color: #646363" runat="server" id="divViewExistingAttachment"  Visible="false" >
              <asp:GridView runat="server" HorizontalAlign="Center" ID="gvExistingAttachments" AutoGenerateColumns="false" Width="90%"
              HeaderStyle-BackColor="White" HeaderStyle-Height="40"  OnPageIndexChanging="gvAttachment_PageIndexChanging" AllowPaging="true" PageSize="50" OnSelectedIndexChanged="gvAttachment_SelectedIndexChanged"> 
@@ -64,7 +65,7 @@
             </Columns>
         </asp:GridView>
         </div>
-        <div runat="server" id="divExistingAttachNotExists" Visible="false" style="text-align: center; font-size: 20px; margin-top: 50px; color: #b44c4c">No Existing Attachment Found!</div>
+        <div runat="server" id="divExistingAttachNotExists" Visible="false" style="text-align: center; font-size: 15px; margin-top: 50px; color: #b44c4c">No Existing Attachment Found!</div>
     </div>
     <br />
     <div style="text-align: initial; font-size: 14px; font-weight: bold; text-align: center;">
